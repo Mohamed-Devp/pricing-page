@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [My solution](https://your-solution-url.com)
-- Live Site URL: [Live demo](https://your-live-site-url.com)
+- Solution URL: [My solution](https://www.frontendmentor.io/solutions/responsive-pricing-page-WVjil11I0D)
+- Live Site URL: [Live demo](https://mohamed-devp.github.io/pricing-page/)
 
 ## My process
 
