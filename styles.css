@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary */
+    --vertical-gradient: linear-gradient(to bottom, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --horizontal-gradient:linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+
+    /* Neutral */
+    --light-grayish-blue: hsl(234, 14%, 74%);
+    --grayish-blue: hsl(233, 13%, 49%);
+    --dark-grayish-blue: hsl(232, 13%, 33%);
+
+    /* Fonts */
+    --primary-font: "Montserrat";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 3rem 0;
+    font-family: var(--primary-font);
+    font-weight: 700;
+    background-color: hsl(240, 78%, 98%);
+    background-image: 
+        url("./images/bg-top.svg"), 
+        url("./images/bg-bottom.svg");
+    background-position: right top, left bottom;
+    background-size: 350px;
+    background-repeat: no-repeat;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5rem;
+}
+
+.title {
+    font-size: clamp(2rem, 2vw, 2.5rem);
+    color: var(--grayish-blue);
+}
+
+.type {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 2rem;
+}
+
+.type p {
+    font-size: 12px;
+    color: var(--light-grayish-blue);
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    background-image: var(--horizontal-gradient);
+    transition: opacity 0.2s ease-in;
+}
+
+.toggle:hover {
+    opacity: 0.6;
+}
+
+.toggle-button {
+    width: 21px;
+    height: 21px;
+    transform: translateX(4px);
+    border-radius: 50px;
+    background-color: white;
+    transition: transform 0.15s ease-in;
+}
+
+.toggle .active {
+    transform: translateX(25px);
+}
+
+/* Main Section styles */
+main {
+    display: grid;
+    grid-template-columns: repeat(3, clamp(350px, 20vw, 425px));
+    /* Cards Border Radius */
+    --radius: 10px; 
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 425px;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 12px 24px hsla(232, 13%, 33%, 0.1);
+}
+
+main .card:first-child {
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+
+main .card:last-child {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.selected {
+    position: relative;
+    border-radius: var(--radius);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.selected::after {
+    content: '';
+    position: absolute;
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: var(--radius);
+    background-image: var(--vertical-gradient);
+    box-shadow: 0 12px 24px hsla(232, 13%, 33%, 0.1);
+    animation: Scale 0.2s ease-in forwards;
+}
+
+.plan {
+    text-align: center;
+    color: var(--grayish-blue);
+}
+
+.selected .plan {
+    color: white;
+}
+
+.price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 2rem;
+    color: var(--dark-grayish-blue);
+}
+
+.price span {
+    font-size: 4rem;
+}
+
+.price .active {
+    animation: FaideIn .4s ease-in forwards;
+}
+
+.selected .price {
+    color: white;
+}
+
+.features {
+    width: 100%;
+    border-top: 1px solid var(--light-grayish-blue);
+}
+
+.feature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    color: var(--grayish-blue);
+    border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+.selected .features {
+    border-top: 1px solid hsl(240, 78%, 98%);
+}
+
+.selected .feature {
+    color: white;
+    border-bottom: 1px solid hsl(240, 78%, 98%);
+}
+
+button {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.selected button {
+    color: hsl(237, 63%, 64%);
+    background-color: white;
+    transition: background-color .2s ease-in;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-image: var(--horizontal-gradient);
+    z-index: -1;
+    transition: opacity .2s ease-in;
+}
+
+.selected button::after {
+    opacity: 0;
+}
+
+button:hover::after {
+    opacity: 0;
+}
+
+button:hover {
+    color: hsl(237, 63%, 64%);
+    border: 1px solid var(--grayish-blue);
+    background-color: white;
+}
+
+.selected button:hover {
+    color: white;
+    border: 1px solid white;
+    background-color: hsl(237, 63%, 64%);
+}
+
+/* Animations */
+@keyframes FaideIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 1150px) {
+    main {
+        grid-template-columns: repeat(2, 350px);
+        grid-template-rows: repeat(2, 425px);
+        justify-content: center;
+    }
+
+    .card {
+        height: auto;
+    }
+
+    main .card:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 350px;
+        border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .selected::after {
+        border-radius: 0 var(--radius) var(--radius) 0;
+        transform: none;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    header {
+        padding-bottom: 4rem;
+    }
+
+    main {
+        grid-template-columns: min(375px, 90vw);
+        grid-template-rows: repeat(3, 425px);
+        gap: 2rem;
+    }
+
+
+    main .card:first-child, main .card:last-child {
+        border-radius: var(--radius);
+    }
+
+    main .card:last-child {
+        grid-column: auto;
+        justify-self: auto;
+        width: auto;
+    }
+
+    .selected::after {
+        border-radius: var(--radius);
+        transform: none;
+    }
+}
+
+/* Responsive Backround */
+@media screen and (max-width: 650px) {
+    body {
+        background-image: url("./images/bg-top.svg");
+        background-position: calc(100% + 175px) 0;
+    }
+}
