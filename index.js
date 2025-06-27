@@ -4,7 +4,6 @@ const toggleButton = toggle.firstElementChild;
 const priceSpans = document.querySelectorAll('.price span');
 
 let activeType = 0; // 0: Monthly - 1: Yearly
-let prevSelected = 1;
 
 const monthlyPrices = [19.99, 24.99, 39.99];
 const yearlyPrices = [199.99, 249.99, 399.99];
